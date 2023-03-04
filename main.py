@@ -13,21 +13,14 @@ class MyMainWindow(QMainWindow):
         self.ui = Ui_AstrOkay()
         self.ui.setupUi(self)
         self.ui.retranslateUi(self)
-
-
         dbastrokay.create_database()
-
-
         self.ui.pushButton_2.clicked.connect(self.flat_frames)
-
-
     def list_files(self):
         self.listWidget.clear()
         files = os.listdir(self.folder_path)
         for file in files:
             if file.endswith(('png', 'jpg', 'jpeg', 'PNG', 'JPG', 'JPEG')):
                 self.listWidget.addItem(file)
-
     def flat_frames(self):
         folder_path = QFileDialog.getExistingDirectory(self, 'Select a folder', '/')
         if folder_path:
@@ -51,10 +44,6 @@ class MyMainWindow(QMainWindow):
                         self.ui.lcdNumber_2.display(flat_frames_count)
                     else:
                         print("Flat frames not checked, skipping file: ", file_info[0])
-
-
-
-
 if __name__ == "__main__":
     app = QApplication([])
     window = MyMainWindow()
