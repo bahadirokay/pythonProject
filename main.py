@@ -14,21 +14,12 @@ class MyMainWindow(QMainWindow):
         self.ui.setupUi(self)
         self.ui.retranslateUi(self)
 
-        # Create the database
+
         dbastrokay.create_database()
 
 
-        # Connect the signals to the appropriate slots
         self.ui.pushButton_2.clicked.connect(self.flat_frames)
-        self.ui.pushButton.clicked.connect(self.light_frame)
-        self.ui.pushButton_3.clicked.connect(self.dark_frames)
-        self.ui.pushButton_4.clicked.connect(self.darkflat_frames)
-        self.ui.pushButton_5.clicked.connect(self.bias_frames)
-        self.ui.pushButton_16.clicked.connect(self.mother_frames)
-        self.ui.pushButton_20.clicked.connect(self.masterflat_frames)
-        self.ui.pushButton_21.clicked.connect(self.masterdark_frames)
-        self.ui.pushButton_32.clicked.connect(self.masterflat_frames)
-        self.ui.pushButton_33.clicked.connect(self.masterbias_frames)
+
 
     def list_files(self):
         self.listWidget.clear()
@@ -36,10 +27,6 @@ class MyMainWindow(QMainWindow):
         for file in files:
             if file.endswith(('png', 'jpg', 'jpeg', 'PNG', 'JPG', 'JPEG')):
                 self.listWidget.addItem(file)
-
-
-    def light_frame(self):
-        pass
 
     def flat_frames(self):
         folder_path = QFileDialog.getExistingDirectory(self, 'Select a folder', '/')
@@ -65,22 +52,6 @@ class MyMainWindow(QMainWindow):
                     else:
                         print("Flat frames not checked, skipping file: ", file_info[0])
 
-    def dark_frames(self):
-        pass
-    def darkflat_frames(self):
-        pass
-    def bias_frames(self):
-        pass
-    def mother_frames(self):
-        pass
-    def masterdarkflat_frames(self):
-        pass
-    def masterdark_frames(self):
-        pass
-    def masterflat_frames(self):
-        pass
-    def masterbias_frames(self):
-        pass
 
 
 
